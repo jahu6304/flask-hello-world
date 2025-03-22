@@ -18,6 +18,7 @@ def create():
     conn = psycopg2.connect("postgresql://jhello_user:77TALs6OnzU517oI6xqY1xWhaMCuebsA@dpg-cves002n91rc73apnhp0-a/jhello")
     cur = conn.cursor()
     cur.execute('''
+                DROP TABLE IF EXISTS Basketball;            
                 CREATE TABLE IF NOT EXISTS Basketball(
                     First varchar(255),
                     Last varchar(255),
