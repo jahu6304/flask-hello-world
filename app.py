@@ -18,7 +18,6 @@ def create():
     conn = psycopg2.connect("postgresql://jhello_user:77TALs6OnzU517oI6xqY1xWhaMCuebsA@dpg-cves002n91rc73apnhp0-a/jhello")
     cur = conn.cursor()
     cur.execute('''
-                DROP TABLE IF EXISTS Basketball;            
                 CREATE TABLE IF NOT EXISTS Basketball(
                     First varchar(255),
                     Last varchar(255),
@@ -66,3 +65,14 @@ def select():
         table_html_build += "</tr>"
     table_html_build += "</table>"
     return table_html_build
+
+@app.route('/db_drop')
+def drop():
+    conn = psycopg2.connect("postgresql://jhello_user:77TALs6OnzU517oI6xqY1xWhaMCuebsA@dpg-cves002n91rc73apnhp0-a/jhello")
+    cur = conn.cursor()
+    cur.execute('''
+                DROP TABLE IF EXISTS Basketball;
+                ''')
+    conn.commit()
+    conn.close()
+    return "Basketball Table Successfully Dropped"
