@@ -59,9 +59,9 @@ def select():
     conn.close()
     table_html_build = "<table>"
     for player_row in records:
-        response_string += "<tr>"
+        table_html_build += "<tr>"
         for info_column in player_row:
-            table_html_build += "<td>{}</td>".format(info)
+            table_html_build += "<td>{}</td>".format(info_column)
         table_html_build += "</tr>"
     table_html_build += "</table>"
     return table_html_build
